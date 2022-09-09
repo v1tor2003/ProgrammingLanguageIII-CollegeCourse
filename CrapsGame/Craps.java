@@ -1,3 +1,4 @@
+package CrapsGame;
 public class Craps{
   public static void main(String[] args){
     int cubes[] = new int[2];
