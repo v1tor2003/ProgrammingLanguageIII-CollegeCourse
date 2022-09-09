@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main{
+public class BattleShip{
   public static void main(String[]args){
     char player1Array[][] = new char[5][5];
     char player2Array[][] = new char[5][5];
