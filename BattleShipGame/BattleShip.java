@@ -5,14 +5,12 @@ public class BattleShip{
     Scanner input = new Scanner(System.in);
     int playerTurn = 1;
     int playerHits[] = new int[2];
-    final int winScore = 5;
-    final int size = 5;
+    final int winScore = 5, size = 5;
     char player1Array[][] = new char[size][size];
     char player2Array[][] = new char[size][size];
     char history1Array[][] = new char[size][size];
     char history2Array[][] = new char[size][size];
 
-    //initializing and showing players arrays
     initializePlayerArray(player1Array, size);
     initializePlayerArray(player2Array, size);
     initializePlayerArray(history1Array, size);
@@ -28,10 +26,10 @@ public class BattleShip{
 
       if(playerTurn == 1){
         shoot(playerHits, history1Array, player2Array, playerId, input, size);
-        playerTurn++;//playerTurn2
+        playerTurn++;
       }else if (playerTurn == 2){
         shoot(playerHits, history2Array, player1Array, playerId, input, size);
-        playerTurn--;//playerTurn = 1
+        playerTurn--;
       }
       
       if(checkWinner(playerHits[playerId-1], winScore)){
@@ -54,11 +52,10 @@ public class BattleShip{
   }
 
   private static void readShipsCoordinates(char playerArray[][], int size, int playerId, Scanner input){
+    int i = 0, row, column;
+
     System.out.println("PLAYER "+ playerId + ", ENTER  YOUR  SHIP'S COORDINATES.");
     
-    int i = 0;
-    int row, column;
-
     while (i < size){
       System.out.println("Enter ship "+ (i+1)+ " location:");
       row = input.nextInt();
