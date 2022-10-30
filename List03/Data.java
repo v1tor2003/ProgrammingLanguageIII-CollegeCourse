@@ -1,4 +1,4 @@
-class Data{
+public class Data{
   private int dia;
   private int mes;
   private int ano;
@@ -115,16 +115,16 @@ class Data{
   }
   public void imprimirData(){
     if (!dataInserida()){
-      System.out.println("Nao cadastrada");
+      System.out.print("Nao cadastrada");
     }else {
       if(dia < 10 && mes < 10)
-        System.out.println("0" + dia + "/0" + mes + "/"+  ano);
+        System.out.print("0" + dia + "/0" + mes + "/"+  ano);
       else if(dia < 10)
-        System.out.println("0" + dia + "/" + mes + "/"+  ano);
+        System.out.print("0" + dia + "/" + mes + "/"+  ano);
       else if(mes < 10)
-        System.out.println(dia + "/0" + mes + "/"+  ano);
+        System.out.print(dia + "/0" + mes + "/"+  ano);
       else 
-        System.out.println(dia + "/" + mes + "/"+  ano);
+        System.out.print(dia + "/" + mes + "/"+  ano);
     }
   }
 
@@ -178,7 +178,7 @@ class Data{
       System.out.println("Nao cadastrada");
     }else{
       
-      System.out.println(dia + " de " + nomeMesExtenso(mes) + " de " + ano+ '.');
+      System.out.print(dia + " de " + nomeMesExtenso(mes) + " de " + ano+ '.');
     }
   }
 

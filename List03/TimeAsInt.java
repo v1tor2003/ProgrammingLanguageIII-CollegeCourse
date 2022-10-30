@@ -69,6 +69,6 @@ public class TimeAsInt {
     }
 
     public void prnTime(){
-        System.out.println(getTime());
+        System.out.print(getTime());
     }
 }

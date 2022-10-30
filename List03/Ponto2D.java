@@ -1,6 +1,11 @@
-class Ponto2D {
+public class Ponto2D {
   private float x, y;
 
+  public Ponto2D(float x, float y){
+    this.x = x;
+    this.y = y;
+  }
+  
   public void imprimirPonto(){
     System.out.println("("+x+", "+y+")");
   }
@@ -44,16 +49,7 @@ class Ponto2D {
     return x;
   }
 
-  public void setX(float x){
-    this.x = x;
-  }
-
   public float getY(){
     return y;
   }
-
-  public void setY(float y){
-    this.y = y;
-  }
-  
 }

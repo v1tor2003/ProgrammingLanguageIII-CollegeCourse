@@ -1,4 +1,4 @@
-class Contato{
+public class Contato{
   private String nome;
   private String email;
   private String telefone;
@@ -35,7 +35,7 @@ class Contato{
 
   private boolean validateEmail(String email){
     String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-    return email.matches(regex);
+    return (email.matches(regex));
   }
 
   private boolean validateName(String nome){
@@ -46,7 +46,7 @@ class Contato{
   private boolean validatePhoneNumber(String telefone){
     final int phoneNumberSize = 10;
     boolean isEqualToANumber = false;
-    char phone [] = telefone.toCharArray();
+    final char phone [] = telefone.toCharArray();
     final char numbersAsChar [] = {'0','1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
     if(telefone.length() != 10)
@@ -54,8 +54,10 @@ class Contato{
     
     for(int i = 0; i < phoneNumberSize; i++){
       for(int j = 0; j < numbersAsChar.length; j++){
-        if(phone[i] == numbersAsChar[j])
-          isEqualToANumber = !isEqualToANumber;
+        if(phone[i] == numbersAsChar[j]){
+          isEqualToANumber = true;
+          break;
+        }
       }
       if (!isEqualToANumber)
         return false;
