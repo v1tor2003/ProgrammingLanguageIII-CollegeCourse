@@ -55,7 +55,11 @@ public class Contato{
     for(int i = 0; i < phoneNumberSize; i++){
       for(int j = 0; j < numbersAsChar.length; j++){
         if(phone[i] == numbersAsChar[j]){
+<<<<<<< HEAD
           isEqualToANumber = true;
+=======
+          isEqualToANumber = !isEqualToANumber;
+>>>>>>> 11beb3d3dc88d94337413d4c33a10fca49fbe68d
           break;
         }
       }
