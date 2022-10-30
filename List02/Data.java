@@ -3,7 +3,7 @@ class Data{
   private int mes;
   private int ano;
 
-  void inicializarData(){
+  public void inicializarData(){
     int diaDefault = 1;
     int mesDefault = 1;
     int anoDefault = 1900;
@@ -12,14 +12,14 @@ class Data{
 
   }
 
-  boolean verificarData(int dia, int mes, int ano){
+  private boolean verificarData(int dia, int mes, int ano){
     if(mes == 2){
       return ((dia >= 1 && dia <= 28) && (ano >= 1900 && ano <= 2100));
     }
     return ((mes >= 1 && mes <= 12) && (dia >= 1 && dia <= 31) && (ano >= 1900 && ano <= 2100));
   }
 
-  void imprimirData(){
+  public void imprimirData(){
     if(dia < 10 && mes < 10)
       System.out.println("0" + dia + "/0" + mes + "/"+  ano);
     else if(dia < 10)
@@ -30,7 +30,7 @@ class Data{
       System.out.println(dia + "/" + mes + "/"+  ano);
   }
   
-  void imprimirDataExtenso(){
+  public void imprimirDataExtenso(){
     String mesExtenso;
     switch(mes){
       case 1:

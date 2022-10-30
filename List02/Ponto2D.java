@@ -1,7 +1,7 @@
 class Ponto2D {
-  int x, y;
+  private int x, y;
 
-  void imprimirPonto(){
+  public void imprimirPonto(){
     System.out.println("("+x+", "+y+")");
   }
 
@@ -34,8 +34,8 @@ class Ponto2D {
     }    
   }
 
-  float distancia(){
-
+  public float distancia(Ponto2D PontoQ){
+    return 2.1;
   }
   
   public int getX(){

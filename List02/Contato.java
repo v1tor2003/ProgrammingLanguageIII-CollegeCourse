@@ -1,16 +1,16 @@
 class Contato{
-  String nome;
-  String email;
-  String telefone;
-  Data dataNascimento = new Data();
+  private String nome;
+  private String email;
+  private String telefone;
+  private Data dataNascimento = new Data();
 
-  void inicializarContato(){
+  public void inicializarContato(){
     String dadoDefault = "Nao cadastrado";
     setContato(dadoDefault, dadoDefault, dadoDefault);
     dataNascimento.inicializarData();
   }
   
-  void imprimirContato(){
+  public void imprimirContato(){
     System.out.println("Nome: " + nome);
     System.out.println("Email: " + email);
     System.out.println("Telefone: " + telefone);
@@ -18,7 +18,7 @@ class Contato{
     dataNascimento.imprimirData();
   }
   
-  int calcularIdade(){
+  public int calcularIdade(){
     final int anoAtual = 2022;
     final int mesAtual = 10;
     

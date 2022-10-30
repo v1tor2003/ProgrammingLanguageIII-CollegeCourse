@@ -1,6 +1,10 @@
 class Lampada {
   private boolean estaLigada;
 
+  public Lampada(boolean estado){
+    this.estaLigada = estado;
+  }
+
   public void acende (){
     this.estaLigada = true;
   }
