@@ -218,6 +218,12 @@ public class Data{
     }
   }
 
+  public void setData(Data outraData){
+    this.setData(outraData.dia, outraData.mes, outraData.ano);
+  }
+
+
+
   int acharAno(){
     return ano;
   }

@@ -1,6 +1,6 @@
 public class Main {
   public static void main(String[] args){
-    TimeAsInt time1 = new TimeAsInt(20, 15, 11);
+    /*TimeAsInt time1 = new TimeAsInt(20, 15, 11);
     TimeAsInt time2 = new TimeAsInt(15, 20);
     TimeAsInt time3 = new TimeAsInt(12);
     TimeAsInt timeObj = new TimeAsInt(10, 20, 30);
@@ -83,6 +83,9 @@ public class Main {
     System.out.println("Contato construtor so com nome");
     contato3.imprimirContato();
     System.out.println();
+    */
 
+    RoboSimples robo = new RoboSimples(null,0, 1, 'f');
+    robo.toString();
   }  
 } 
