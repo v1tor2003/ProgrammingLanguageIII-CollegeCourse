@@ -56,5 +56,33 @@ public class Main {
     time3.prnTime();
     System.out.println();
 
+    Ponto2D ponto1 = new Ponto2D(1, 2);
+    Ponto2D ponto2 = new Ponto2D(2, 2);
+    
+    String nome = "Vitor";
+    String email = "vitor.pr04@hotmail.com";
+    String telefone = "7398545529";
+    int dia = 29, mes = 9, ano = 2003;
+    
+    Contato contato1 = new Contato(nome, email, telefone, dia, mes, ano);
+    Contato contato2 = new Contato(nome, email, telefone);
+    Contato contato3 = new Contato(nome);
+    
+    System.out.println("distancia do Ponto1 para Ponto2 = " + ponto1.distancia(ponto2));
+    System.out.println("distancia ponto 1 para origem = " + ponto1.distancia());
+    System.out.println("distancia ponto 1 para x e y = " + ponto1.distancia(ponto2.getX(), ponto2.getY()));
+
+    System.out.println("Contato construtor completo");
+    contato1.imprimirContato();
+    System.out.println();
+
+    System.out.println("Contato construtor de 3 args");
+    contato2.imprimirContato();
+    System.out.println();
+
+    System.out.println("Contato construtor so com nome");
+    contato3.imprimirContato();
+    System.out.println();
+
   }  
 } 

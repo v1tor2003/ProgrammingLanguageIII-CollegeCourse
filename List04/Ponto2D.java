@@ -7,8 +7,7 @@ public class Ponto2D {
   }
 
   public Ponto2D(){
-    this.x = 0;
-    this.y = 0;
+    this(0, 0);
   }
   
   public void imprimirPonto(){
@@ -44,24 +43,19 @@ public class Ponto2D {
     }    
   }
 
-  public float distancia(Ponto2D PontoQ){
-    final float potValor = 2;
-    double distancia = Math.pow((this.x - PontoQ.x), potValor) + Math.pow((this.y - PontoQ.y), potValor);
-    return (float) (Math.sqrt(distancia));
-  }
-
-  public float distancia(){
-    final float potValor = 2;
-    double distancia = Math.pow((this.x), potValor) + Math.pow((this.y), potValor);
-    return (float) (Math.sqrt(distancia));
-  }
-
   public float distancia(float x, float y){
     final float potValor = 2;
     double distancia = Math.pow((this.x - x), potValor) + Math.pow((this.y - y), potValor);
     return (float) (Math.sqrt(distancia));
   }
-  
+
+  public float distancia(){
+    return distancia(0,0);
+  }
+
+  public float distancia(Ponto2D PontoQ){
+    return distancia(PontoQ.getX(), PontoQ.getY());
+  }
   
   public float getX(){
     return x;

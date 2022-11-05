@@ -15,11 +15,18 @@ public class Contato{
       this.nome = dadoDefault;
       this.email = dadoDefault;
       this.telefone = dadoDefault;
-
     }
 
     this.dataNascimento = new Data(dia, mes, ano);
   }
+
+  public Contato(String nome, String email, String telefone){
+    this(nome, email, telefone, 0, 0, 0);
+  }
+
+  public Contato(String nome){
+    this(nome, null, null, 0, 0, 0);
+  }  
   
   public void imprimirContato(){
     System.out.println("Nome: " + nome);
@@ -30,7 +37,7 @@ public class Contato{
   }
   
   private boolean validateContact(String nome, String email, String telefone){
-    return (validateName(nome) && validateEmail(email) && validatePhoneNumber(telefone));
+    return (validateName(nome) || (validateEmail(email) || validatePhoneNumber(telefone)));
   }
 
   private boolean validateEmail(String email){
@@ -38,9 +45,8 @@ public class Contato{
     return (email.matches(regex));
   }
 
-  private boolean validateName(String nome){
-    final int minNameSize = 3;    
-    return (nome.length() > minNameSize);
+  private boolean validateName(String nome){  
+    return (nome != null);
   }
 
   private boolean validatePhoneNumber(String telefone){
