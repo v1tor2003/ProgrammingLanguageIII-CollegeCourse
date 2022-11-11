@@ -39,7 +39,7 @@ public class Data{
   }
 
   public boolean isPrevious(Data outraData){
-    if(howManyDays(outraData) > 0)
+    if(howManyDays(outraData) >= 0)
       return false;
 
     return true;
