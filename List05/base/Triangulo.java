@@ -1,8 +1,9 @@
 package base;
-
+// TO BE TESTED
 public class Triangulo {
   private Ponto2D A, B, C;
   private float ladoAB, ladoAC, ladoBC;
+  final static double EPSILON = 0.000001;
   private boolean isTriangulo;
 
   public Triangulo(float xa, float ya, float xb, float yb, float xc, float yc){
@@ -21,31 +22,52 @@ public class Triangulo {
     this(A.getX(), A.getY(), B.getX(), B.getY(), C.getX(), C.getY());
   }
 
-  // TO FINISH, WE JUST NEED TO GET THE HIP AND THE CATS
   public boolean isTrianguloRetangulo(){
-    final double EPSILON = 0.000001;
     float hip, catA, catB;
 
-    hip = getHipotenusa();
-    return ((this.isTriangulo) && (Math.abs((hip * hip) - ((catA * catA) - (catB * catB))) < EPSILON));
+    if(isTrianguloEquilatero())
+      return false;
+
+    if(ladoAB > ladoAC && ladoAB > ladoBC){
+      hip = ladoAB;
+      catA = ladoAC;
+      catB = ladoBC;
+    }else{
+      catA = ladoAB;
+      if(ladoAC > ladoBC){
+        hip = ladoAC;
+        catB = ladoBC;
+      }else{
+        hip = ladoBC;
+        catB = ladoAC;
+      }
+    }
+
+    return ((this.isTriangulo) && checkHipEqualsPecs(hip, catA, catB));
   }
 
   public boolean isTrianguloIssoceles(){
-    final double EPSILON = 0.000001;
-    return ((this.isTriangulo) && (Math.abs(this.ladoAB - ladoAC) < EPSILON) || (Math.abs(this.ladoAB - ladoBC) < EPSILON) || (Math.abs(this.ladoBC - this.ladoAC) < EPSILON)));
+    
+    return ((this.isTriangulo) && (isRealsEquals(ladoAB, ladoAC)  || isRealsEquals(ladoAB, ladoBC) || isRealsEquals(ladoBC, ladoAC)));
   }
 
-  public boolean isTringuloEquilatero(){
-    final double EPSILON = 0.000001;
-    return ((this.isTriangulo) && (Math.abs(this.ladoAB - this.ladoAC) < EPSILON) && (Math.abs(this.ladoAC - this.ladoBC) < EPSILON));
+  public boolean isTrianguloEquilatero(){
+    
+    return ((this.isTriangulo) && (isRealsEquals(ladoAB, ladoAC) && isRealsEquals(ladoAC, ladoBC)));
   }
 
   private boolean validateTriangulo(float ladoAB, float ladoAC, float ladoBC){
     return ((ladoAB + ladoAC > ladoBC) && (ladoAB + ladoBC > ladoAC) && (ladoAC + ladoBC) > ladoAB);
   }
 
-  private float getHipotenusa(){
-    
+  private boolean isRealsEquals(float a, float b){
+    return (Math.abs(a - b) < EPSILON);
+  }
+
+  private boolean checkHipEqualsPecs(float hip, float catA, float catB){
+    float a = hip * hip;
+    float b = ((catA * catA) - (catB * catB));
+    return isRealsEquals(a, b);
   }
 
   public String imprimeTriangulo(){
@@ -55,6 +77,7 @@ public class Triangulo {
     return String.format("Triangulo representado pelos pontos A %s, B %s, C %s",
             this.A, this.B, this.C); 
   }
+
   public String toString(){
     return imprimeTriangulo();
   }

@@ -1,4 +1,5 @@
 package base;
+
 public class Data{
   private int dia;
   private int mes;
@@ -21,7 +22,7 @@ public class Data{
   }
 
   public Data(Data dataInput){
-    this(dataInput.dia, dataInput.mes, dataInput.ano);
+    this(dataInput.getDia(), dataInput.getMes(), dataInput.getAno());
   }
 
   private boolean verificarData(int dia, int mes, int ano){
@@ -174,14 +175,6 @@ public class Data{
 
   public void setData(Data outraData){
     this.setData(outraData.dia, outraData.mes, outraData.ano);
-  }
-
-  public int acharAno(){
-    return ano;
-  }
-
-  public int acharMes(){
-    return mes;
   }
 
   public String toString(){

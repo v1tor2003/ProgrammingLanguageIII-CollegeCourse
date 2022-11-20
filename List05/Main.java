@@ -1,12 +1,9 @@
-import base.DataHoraComp;
-import base.SegmentoRetaComp;
+import base.agendamento.Agendamento;
 
 public class Main {
   public static void main (String[] args){
-      DataHoraComp dhTest = new DataHoraComp();
-      System.out.println(dhTest);
 
-      SegmentoRetaComp srTest = new SegmentoRetaComp(1, 2, 3, 1);
-      System.out.println(srTest);
+      Agendamento agTest = new Agendamento("Vitor", "vitor.pr@gmail.com", "7398545529");
+      System.out.println(agTest);
   }
 }
