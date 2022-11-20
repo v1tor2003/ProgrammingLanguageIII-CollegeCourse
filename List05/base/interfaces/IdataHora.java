@@ -1,6 +1,6 @@
 package base.interfaces;
 
-import base.DataHoraComp;
+import base.data_hora.DataHoraComp;
 
 public interface IdataHora {
   @Override

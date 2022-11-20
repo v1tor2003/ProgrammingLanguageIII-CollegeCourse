@@ -1,6 +1,6 @@
-package base.agendamento;
+package agendamento;
 
-import base.Data;
+import base.data_hora.Data;
 
 public class Contato{
   private String nome;

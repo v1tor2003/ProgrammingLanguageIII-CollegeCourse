@@ -1,4 +1,4 @@
-package base;
+package base.reta;
 
 import base.interfaces.IsegmentoReta;
 

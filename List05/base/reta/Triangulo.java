@@ -1,4 +1,4 @@
-package base;
+package base.reta;
 // TO BE TESTED
 public class Triangulo {
   private Ponto2D A, B, C;

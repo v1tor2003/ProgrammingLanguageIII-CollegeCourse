@@ -1,4 +1,4 @@
-package base;
+package base.data_hora;
 public class TimeAsInt {
     private int value;
 

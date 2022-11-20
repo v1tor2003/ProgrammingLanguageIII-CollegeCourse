@@ -1,4 +1,4 @@
-package base;
+package base.reta;
 public class Ponto2D {
   private float x, y;
 

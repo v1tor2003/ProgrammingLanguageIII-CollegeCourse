@@ -1,6 +1,6 @@
-package base.agendamento;
+package agendamento;
 
-import base.DataHoraComp;
+import base.data_hora.DataHoraComp;
 
 public class Agendamento {
   private Contato person;
