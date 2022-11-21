@@ -1,18 +1,17 @@
 package base.interfaces;
-import base.singly_list.Node;
 
-public interface IsinglyList {
+public interface IsinglyList<T> {
   @Override
   String toString();
   boolean isEmpty();
   void show();
-  void insertAtStart(int data);
-  void insertAfter(int data, int reference);
-  void insertAtEnd(int data);
-  Node findNode(Node start, int reference);
-  Node findEnd(Node start);
-  Node createNode(int data);
-  Node removeFromStart();
-  Node removeAfter(int reference);
-  Node removeFromEnd();
+  void insertAtStart(T data);
+  void insertAfter(T data, T reference);
+  void insertAtEnd(T data);
+  boolean isPresent(T data);
+  //Node<T> findNode(Node<T> start, T reference);
+  //Node<T> createNode(T data);
+  //Node<T> removeFromStart();
+  //Node<T> removeAfter(T reference);
+  //Node<T> removeFromEnd();
 }

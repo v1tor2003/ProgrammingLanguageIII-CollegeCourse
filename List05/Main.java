@@ -1,23 +1,20 @@
-import base.singly_list.SinlgyLinkedList;
+import base.singly_list.SinglyLinkedList;
 
 public class Main {
   public static void main (String[] args){
-    SinlgyLinkedList myList = new SinlgyLinkedList();
-    myList.insertAtEnd(1);
-    myList.insertAtEnd(2);
-    myList.insertAtEnd(3);
-
-    myList.insertAtStart(20);
-    myList.insertAtStart(10);
-    myList.insertAtStart(30);
+    SinglyLinkedList<String> myList = new SinglyLinkedList<>();
+    myList.insertAtStart("Vitor");
+    myList.insertAtStart("TestStart");
+    myList.insertAtEnd("TestEnd");
+    
+    myList.insertAfter("null", "Vitor");
     myList.show();
 
     myList.removeFromStart();
-    myList.removeAfter(20);
     myList.removeFromEnd();
-    myList.removeFromEnd();
-    
+    myList.removeAfter("Vitor");
     System.out.println();
     myList.show();
+
   }
 }
