@@ -14,4 +14,5 @@ public interface IsinglyList<T> {
   //Node<T> removeFromStart();
   //Node<T> removeAfter(T reference);
   //Node<T> removeFromEnd();
+  //Node<T> remove();
 }

@@ -1,4 +1,4 @@
-package agendamento;
+package base.agendamento;
 
 import base.data_hora.Data;
 
@@ -102,6 +102,14 @@ public class Contato{
 
   public String getTelefone(){
     return telefone;
+  }
+
+  public boolean isEmailValid(){
+    return validateEmail(this.email);
+  }
+
+  public boolean isPhoneValid(){
+    return validatePhoneNumber(this.telefone);
   }
 
   public void setContato(String nome, String email, String telefone){

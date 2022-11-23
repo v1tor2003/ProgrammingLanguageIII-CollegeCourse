@@ -13,8 +13,8 @@ public class SegmentoRetaComp implements IsegmentoReta {
     this.dimensao = calculaDimensao();
   }
 
-  public SegmentoRetaComp(Ponto2D P1, Ponto2D P2){
-    this(P1.getX(), P1.getY(), P2.getX(), P2.getY());
+  public SegmentoRetaComp(Ponto2D p12, Ponto2D p22){
+    this(p12.getX(), p12.getY(), p22.getX(), p22.getY());
   }
 
   @Override

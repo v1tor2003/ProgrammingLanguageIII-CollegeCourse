@@ -98,12 +98,18 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
   
   private Node findNode(Node start, T reference) {
     // TODO Auto-generated method stub
-    if(start.info == reference)
-      return start;
-    if(start.next == null)
+    if((start.info == reference) || (start.next == null))
       return start;
 
     return findNode(start.next, reference);
+  }
+
+  private Node findBeforeNode(Node start, T reference){
+    Node referenceNode = findNode(start, reference);
+    while(start.next != referenceNode){
+      start = start.next;
+    }
+    return start;
   }
 
   public Node createNode(T data) {
@@ -179,5 +185,26 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
     this.tail = previousEnd;
     
     return end;
+  }
+
+  public Node remove(T node){
+    if(isEmpty()){
+      System.out.println("List is empty");
+      return null;
+    }
+
+    System.out.println(node == this.tail);
+    System.out.println(this.head == this.tail);
+
+    if (node == this.tail)
+      return removeFromEnd();
+    else if (this.head == this.tail)
+      return removeFromStart();
+      
+    Node nodeBeforeReference = findBeforeNode(this.head, node);
+    Node reference = nodeBeforeReference.next;
+    nodeBeforeReference.next = reference.next;
+      
+    return nodeBeforeReference;
   }
 }

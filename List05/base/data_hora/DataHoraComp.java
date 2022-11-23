@@ -60,6 +60,14 @@ public class DataHoraComp implements IdataHora {
     return false;
   }
 
+  public Data getData(){
+    return this.data;
+  }
+
+  public TimeAsInt getHora(){
+    return this.hora;
+  }
+
   public String toString(){
     return data + ", " + hora;
   }
