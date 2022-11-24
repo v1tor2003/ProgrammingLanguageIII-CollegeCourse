@@ -6,7 +6,7 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
   private Node head;
   private Node tail;
 
-  class Node {
+  public class Node implements Comparable<T> {
     T info;
     Node next;
 
@@ -18,6 +18,14 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
     public String toString(){
       return String.format("%s", this.info);
     }
+
+    @Override
+    public int compareTo(T o) {
+      // TODO Auto-generated method stub
+      return 0;
+    }
+
+  
   }
 
   public SinglyLinkedList(){
@@ -95,21 +103,13 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
     
     return testNode != null;
   }
-  
+
   private Node findNode(Node start, T reference) {
     // TODO Auto-generated method stub
     if((start.info == reference) || (start.next == null))
       return start;
 
     return findNode(start.next, reference);
-  }
-
-  private Node findBeforeNode(Node start, T reference){
-    Node referenceNode = findNode(start, reference);
-    while(start.next != referenceNode){
-      start = start.next;
-    }
-    return start;
   }
 
   public Node createNode(T data) {
@@ -178,33 +178,21 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
     Node previousEnd = beforeEnd(this.head);
     Node end = previousEnd.next;
     
-    //if(previousEnd.next == null)
-    //  return null;
-    
     previousEnd.next = null;
     this.tail = previousEnd;
     
     return end;
   }
 
-  public Node remove(T node){
+  public Node remove(T reference){
     if(isEmpty()){
       System.out.println("List is empty");
       return null;
     }
 
-    System.out.println(node == this.tail);
-    System.out.println(this.head == this.tail);
-
-    if (node == this.tail)
+    if ((reference == this.tail) || (this.head == this.tail))
       return removeFromEnd();
-    else if (this.head == this.tail)
-      return removeFromStart();
-      
-    Node nodeBeforeReference = findBeforeNode(this.head, node);
-    Node reference = nodeBeforeReference.next;
-    nodeBeforeReference.next = reference.next;
-      
-    return nodeBeforeReference;
+
+    return removeFromStart();
   }
 }

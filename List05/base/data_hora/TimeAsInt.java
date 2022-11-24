@@ -77,13 +77,22 @@ public class TimeAsInt {
     }
 
     private String secondsToTime(){
-      int hora, min, sec;
+      final int conditionToShow0 = 10;
       
-      hora = value/3600;
-      min = (value % 3600)/60;
-      sec = (value % 3600)%60;
+      String horaStr = formatIntegerOutput(value/3600, conditionToShow0);
+      String minStr = formatIntegerOutput((value % 3600)/60, conditionToShow0); 
+      String secStr = formatIntegerOutput((value % 3600)%60, conditionToShow0);
+      
+      return String.format("%s:%s:%s", horaStr, minStr, secStr);
+    }
 
-      return String.format("%d:%d:%d", hora, min, sec);
+    private String formatIntegerOutput(int input, int conditional){
+      String output = Integer.toString(input);
+
+      if(input < conditional)
+        return output = "0" + output;
+      
+      return output;
     }
 
     public void setTime(int hora, int min, int seg){

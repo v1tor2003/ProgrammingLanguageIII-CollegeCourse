@@ -3,14 +3,38 @@ package base.agendamento;
 import base.singly_list.SinglyLinkedList;
 
 public class ListaDeAgendamentos extends SinglyLinkedList<Agendamento> {
-  // agendamentos.ordenar();
-  // agendamentos.agendar(Agendamento obj);
-  // ckeck if the obj is like someone already in the list, if not, we put the new obj;
-  // agendamentos.removerAgendamento(referencia);
-  // find the obj and removes by comparing if referencia == email or phone, 
-  // if there is no one in the list or no one == refrencie
-  // we print a message sayin that 'Agendamento n encontrado'
+  // ListaDeAgendamentos.ordernar is the one Left, 
+  // Also we need to fix isPresent()
+  // We are getting troubles comparing, it´s comparing the class
+  // Not the scheduleTime as we want
+  
+  public ListaDeAgendamentos(){
+    super();
+  }
 
-  // agendamentos.show();
-  // overrides the super one to put the message 'Lista de Agendamentos'
+  public void agendar(Agendamento obj){
+    if(isEmpty() || !isPresent(obj)){
+      insertAtEnd(obj);
+      return;
+    }
+
+    System.out.println("A lista ja possui um agendamento para essa hora.");
+  }
+
+  public Node removerAgendamento(Agendamento reference){
+    Node removedNode = remove(reference);
+
+    if(removedNode == null){  
+      System.out.println("Agendamento nao encontrado.");
+      return null;
+    }
+
+    return removedNode;
+  }
+
+  @Override
+  public void show(){
+    System.out.println("\tLista de Agendamentos:");
+    super.show();
+  }
 }

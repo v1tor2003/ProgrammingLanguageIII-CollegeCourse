@@ -126,18 +126,21 @@ public class Data{
     return extraDays;
   }
   public String imprimirData(){
-    String str = "";
-    
-    if(dia < 10 && mes < 10)
-      str = String.format("0%d/0%d/%d", this.dia, this.mes, this.ano);
-    else if(dia < 10)
-      str = String.format("0%d/%d/%d", this.dia, this.mes, this.ano);
-    else if(mes < 10)
-      str = String.format("%d/0%d/%d", this.dia, this.mes, this.ano);
-    else 
-      str = String.format("%d/%d/%d", this.dia, this.mes, this.ano);
+    final int conditionToShow0 = 10;
 
-    return str;
+    String diaStr = formatIntegerOutput(this.dia, conditionToShow0);
+    String mesStr = formatIntegerOutput(this.mes, conditionToShow0);
+    
+    return String.format("%s/%s/%d", diaStr, mesStr, this.ano);
+  }
+
+  private String formatIntegerOutput(int input, int conditional){
+    String output = Integer.toString(input);
+
+    if(input < conditional)
+      return output = "0" + output;
+    
+    return output;
   }
 
   private String nomeMesExtenso(int mes){
