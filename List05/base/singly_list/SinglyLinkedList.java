@@ -1,36 +1,38 @@
 package base.singly_list;
 
-import base.interfaces.IsinglyList;
+import base.interfaces.SinglyListI;
 
-public class SinglyLinkedList<T> implements IsinglyList<T>{
-  private Node head;
-  private Node tail;
-
-  public class Node implements Comparable<T> {
-    T info;
-    Node next;
-
-    Node(T info){
-      this.info = info;
+public class SinglyLinkedList<T> implements SinglyListI<T>{
+  
+  private static class Node<T> {
+    private T data;
+    private Node<T> next;
+  
+    Node(T obj){
+      this.data = obj;
       this.next = null;
     }
-
-    public String toString(){
-      return String.format("%s", this.info);
-    }
-
-    @Override
-    public int compareTo(T o) {
-      // TODO Auto-generated method stub
-      return 0;
-    }
-
   
+    public String toString(){
+      return String.format("%s", this.data);
+    }
+    
   }
+
+  private Node<T> head;
+  private Node<T> tail;
+  private int size;
 
   public SinglyLinkedList(){
     this.head = null;
     this.tail = null;
+    this.size = 0;
+  }
+  @Override
+  public boolean isPresent(T node){
+    Node<T> testNode = findNode(this.head, node);
+    
+    return testNode != null;
   }
 
   @Override
@@ -40,9 +42,19 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
   }
 
   @Override
+  public void first(){
+    System.out.println(this.head);
+  }
+
+  @Override
+  public void last(){
+    System.out.println(this.tail);
+  }
+
+  @Override
   public void show() {
     // TODO Auto-generated method stub
-    Node currentNode = this.head;
+    Node<T> currentNode = this.head;
 
     if(isEmpty()){
       System.out.println("List is empty");
@@ -58,7 +70,7 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
   @Override
   public void insertAtStart(T data) {
     // TODO Auto-generated method stub
-    Node newNode = createNode(data);
+    Node<T> newNode = createNode(data);
     
     if(isEmpty()){
       this.head = newNode;
@@ -67,13 +79,15 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
       newNode.next = this.head;
       this.head = newNode;
     }
+
+    this.size++;
   }
 
   @Override
   public void insertAfter(T data, T reference) {
     // TODO Auto-generated method stub
-    Node newNode = createNode(data);
-    Node placeToInsert;  
+    Node<T> newNode = createNode(data);
+    Node<T> placeToInsert;  
     
     if(!isEmpty()){
       placeToInsert = findNode(this.head, reference);
@@ -81,12 +95,14 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
       placeToInsert.next = newNode;
     }else
       this.head = newNode;
+    
+    this.size++;
   }
 
   @Override
   public void insertAtEnd(T data) {
     // TODO Auto-generated method stub
-    Node newNode = createNode(data);
+    Node<T> newNode = createNode(data);
     
     if(isEmpty()){
       this.head = newNode;
@@ -95,88 +111,87 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
       this.tail.next = newNode;
       this.tail = newNode;
     }
+
+    this.size++;
   }
   
-  @Override
-  public boolean isPresent(T node){
-    Node testNode = findNode(this.head, node);
-    
-    return testNode != null;
-  }
-
-  private Node findNode(Node start, T reference) {
+  private Node<T> findNode(Node<T> start, T reference) {
     // TODO Auto-generated method stub
-    if((start.info == reference) || (start.next == null))
+    if((start.equals(reference)) || (start.next == null))
       return start;
 
     return findNode(start.next, reference);
   }
 
-  public Node createNode(T data) {
+  public Node<T> createNode(T data) {
     // TODO Auto-generated method stub
-    Node node = new Node(data);
+    Node<T> node = new Node<T>(data);
 
     return node;
   }
 
-  public Node removeFromStart() {
-    // TODO Auto-generated method stub
-    if(isEmpty()){
-      System.out.println("List is empty");
-      return null;
-    }
-    
-    Node temp = this.head;
-    this.head = temp.next;
-    temp.next = null;
-    
-    if(isEmpty())
-      this.tail = this.head;
-    
-    return temp;
-  }
-  
-  public Node removeAfter(T reference) {
-    // TODO Auto-generated method stub
-    if(isEmpty()){
-      System.out.println("List is empty");
-      return null;
-    }
-
-    Node placeToRemove = findNode(head, reference);
-    
-    if(placeToRemove.next == null)
-      return null;
-    
-    Node temp = placeToRemove.next;
-    placeToRemove.next = temp.next;
-    
-    return temp;
-  }
-
-  private Node beforeEnd(Node start){
+  private Node<T> beforeEnd(Node<T> start){
     if(start.next == this.tail)
       return start;
     
     return beforeEnd(start.next);
   }
 
-  public Node removeFromEnd() {
+  public Node<T> removeFromStart() {
     // TODO Auto-generated method stub
     if(isEmpty()){
       System.out.println("List is empty");
       return null;
     }
     
+    Node<T> temp = this.head;
+    this.head = temp.next;
+    temp.next = null;
+    
+    if(isEmpty())
+      this.tail = this.head;
+    
+    this.size--;
+    return temp;
+  }
+  
+  public Node<T> removeAfter(T reference) {
+    // TODO Auto-generated method stub
+    if(isEmpty()){
+      System.out.println("List is empty");
+      return null;
+    }
+
+    Node<T> placeToRemove = findNode(head, reference);
+    
+    if(placeToRemove.next == null)
+      return null;
+    
+    Node<T> temp = placeToRemove.next;
+    placeToRemove.next = temp.next;
+    
+    this.size--;
+    return temp;
+  }
+
+  public Node<T> removeFromEnd() {
+    // TODO Auto-generated method stub
+    if(isEmpty()){
+      System.out.println("List is empty");
+      return null;
+    }
+    
+    this.size--;
+
     if(this.head == this.tail){
-      Node temp = this.head;
+      Node<T> temp = this.head;
       this.head = null;
       this.tail = null;
       return temp;
     }
 
-    Node previousEnd = beforeEnd(this.head);
-    Node end = previousEnd.next;
+    Node<T> previousEnd = beforeEnd(this.head);
+    Node<T> end = previousEnd.next;
     
     previousEnd.next = null;
     this.tail = previousEnd;
@@ -184,7 +199,7 @@ public class SinglyLinkedList<T> implements IsinglyList<T>{
     return end;
   }
 
-  public Node remove(T reference){
+  public Node<T> remove(T reference){
     if(isEmpty()){
       System.out.println("List is empty");
       return null;

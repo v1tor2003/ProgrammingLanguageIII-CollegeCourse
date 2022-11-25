@@ -2,7 +2,7 @@ package base.interfaces;
 
 import base.data_hora.DataHoraComp;
 
-public interface IdataHora {
+public interface DataHoraI {
   @Override
   String toString();
   boolean isEqual(DataHoraComp outra);

@@ -1,8 +1,8 @@
 package base.reta;
 
-import base.interfaces.IsegmentoReta;
+import base.interfaces.SegmentoRetaI;
 
-public class SegmentoRetaComp implements IsegmentoReta {
+public class SegmentoRetaComp implements SegmentoRetaI {
   private Ponto2D P1;
   private Ponto2D P2;
   private float dimensao;

@@ -1,9 +1,9 @@
 package base.data_hora;
 
-import base.interfaces.IdataHora;
+import base.interfaces.DataHoraI;
 
 // USING COMPOSITION HERE
-public class DataHoraComp implements IdataHora {
+public class DataHoraComp implements DataHoraI {
   private Data data;
   private TimeAsInt hora;
 

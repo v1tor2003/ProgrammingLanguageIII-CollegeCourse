@@ -1,6 +1,7 @@
-import base.data_hora.Data;
+package List06.statics;
 
 public class Contato{
+  private static int countContato = 0;
   private String nome;
   private String email;
   private String telefone;
@@ -19,6 +20,8 @@ public class Contato{
       this.telefone = dadoDefault;
     }
 
+    countContato+=1;
+
     this.dataNascimento = new Data(dia, mes, ano);
   }
 
@@ -27,23 +30,23 @@ public class Contato{
   }
 
   public Contato(String nome){
-    this(nome, null, null, 0, 0, 0);
+    this(nome, null, null, 0 ,0 ,0);
   }  
   
-  public void imprimirContato(){
-    System.out.println("Nome: " + nome);
-    System.out.println("Email: " + email);
-    System.out.println("Telefone: " + telefone);
-    System.out.print("Data de Nascimento: ");
-    dataNascimento.imprimirData();
+  private String imprimirContato(){
+  
+    return String.format("Nome: %s\nEmail: %s\nTelefone: %s\nData de Nascimento: %s\n", this.nome, this.email, this.telefone, this.dataNascimento); 
   }
   
   private boolean validateContact(String nome, String email, String telefone){
-    return (validateName(nome) || (validateEmail(email) || validatePhoneNumber(telefone)));
+    return (validateName(nome) && ((validateEmail(email) || validatePhoneNumber(telefone))));
   }
 
   private boolean validateEmail(String email){
     String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+    if(email == null)
+      return false;
+
     return (email.matches(regex));
   }
 
@@ -53,12 +56,14 @@ public class Contato{
 
   private boolean validatePhoneNumber(String telefone){
     final int phoneNumberSize = 10;
+    
+    if(telefone == null || telefone.length() != 10 )
+      return false;
+    
     boolean isEqualToANumber = false;
     final char phone [] = telefone.toCharArray();
     final char numbersAsChar [] = {'0','1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
-    if(telefone.length() != 10)
-      return false;
     
     for(int i = 0; i < phoneNumberSize; i++){
       for(int j = 0; j < numbersAsChar.length; j++){
@@ -78,8 +83,8 @@ public class Contato{
     final int anoAtual = 2022;
     final int mesAtual = 10;
     
-    int mesNascimento = dataNascimento.acharMes();
-    int anoNascimento = dataNascimento.acharAno();
+    int mesNascimento = dataNascimento.getMes();
+    int anoNascimento = dataNascimento.getAno();
     int age = anoAtual - anoNascimento; 
     
     if(mesAtual < mesNascimento)
@@ -100,6 +105,18 @@ public class Contato{
     return telefone;
   }
 
+  public static int getContatoQntd(){
+    return countContato;
+  }
+  
+  public boolean isEmailValid(){
+    return validateEmail(this.email);
+  }
+
+  public boolean isPhoneValid(){
+    return validatePhoneNumber(this.telefone);
+  }
+
   public void setContato(String nome, String email, String telefone){
     this.nome = nome;
     this.email = email;
@@ -108,5 +125,9 @@ public class Contato{
   
   public void setDataNascimento(int dia, int mes, int ano){
     dataNascimento.setData(dia, mes, ano);
+  }
+
+  public String toString(){
+    return imprimirContato();
   }
 }

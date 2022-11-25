@@ -1,6 +1,6 @@
 package base.interfaces;
 
-public interface IsegmentoReta {
+public interface SegmentoRetaI {
   @Override
   String toString();
   String imprimeSegmentoReta();
