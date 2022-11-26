@@ -17,6 +17,7 @@ public class List06Client {
 
     System.out.println("Time testing:");
     System.out.println("diffTime (t1, t2): " + TimeAsInt.diffTime(time1, time2));
+    System.out.println("diffTime (t1): "+ TimeAsInt.diffTime(time1));
     System.out.println("isAm (t1): " + TimeAsInt.isAm(time1));
     System.out.println("isPm (t1): " + TimeAsInt.isPm(time1));
 
@@ -32,5 +33,6 @@ public class List06Client {
     System.out.println("dayToPrintShort/imprimirData: " + data.imprimirData());
     System.out.println("dayToPrintLong/imprimirDataExtenso (static): " + Data.imprimirDataExtenso(25, 11, 2022));
     System.out.println("dayToPrintLong/imprimirDataExtenso: " + data.imprimirDataExtenso());
+  
   }
 }

@@ -1,6 +1,5 @@
 package List06.statics;
-//import java.util.Date;
-//missing diffTime with the java Date obj
+import java.util.Calendar;
 
 public class TimeAsInt {
     private int value;
@@ -85,9 +84,20 @@ public class TimeAsInt {
       return new TimeAsInt(0, 0, differnce);
     }
 
-    //public static TimeAsInt diffTime(TimeAsInt obj){
-      //Date current = new Date();
-    //}
+    public static TimeAsInt diffTime(TimeAsInt obj){
+      TimeAsInt currentTime = getCurrentTime();
+      
+      return TimeAsInt.diffTime(currentTime, obj);
+    }
+
+    public static TimeAsInt getCurrentTime(){
+      Calendar currentDate = Calendar.getInstance();
+      int currentHour = currentDate.get(Calendar.HOUR_OF_DAY);
+      int currentMinute = currentDate.get(Calendar.MINUTE);
+      int currentSecond = currentDate.get(Calendar.SECOND);
+
+      return new TimeAsInt(currentHour, currentMinute, currentSecond);
+    }
     
     public boolean isPrevious(TimeAsInt outraHora){
       if(howManySeconds(outraHora) >= 0)
