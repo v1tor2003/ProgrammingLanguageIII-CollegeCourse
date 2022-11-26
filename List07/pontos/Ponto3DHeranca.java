@@ -1,11 +1,10 @@
-package List07.base;
+package List07.pontos;
 
 public class Ponto3DHeranca extends Ponto2D {
   private float z;
 
   public Ponto3DHeranca(){
-    super(0, 0);
-    this.z = 0;
+    this(0, 0, 0);
   }
 
   public Ponto3DHeranca(float x, float y, float z){

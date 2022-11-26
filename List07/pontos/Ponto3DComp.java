@@ -1,16 +1,15 @@
-package List07.base;
+package List07.pontos;
 
 public class Ponto3DComp {
-  private Ponto2D coodenatesXY;
+  private Ponto2D coordenatesXY;
   private float z;
 
   public Ponto3DComp(){
-    this.coodenatesXY = new Ponto2D();
-    this.z = 0;
+    this(0, 0, 0);
   }
 
   public Ponto3DComp(float x, float y, float z){
-    this.coodenatesXY = new Ponto2D(x, y);
+    this.coordenatesXY = new Ponto2D(x, y);
     this.z = z;
   }
 
@@ -19,15 +18,15 @@ public class Ponto3DComp {
   }
 
   public boolean isAxisX(){
-    return coodenatesXY.getY() == 0 && this.z == 0; 
+    return this.getY() == 0 && this.z == 0; 
   }
 
   public boolean isAxisY(){
-    return coodenatesXY.getX() == 0 && this.z == 0; 
+    return this.getX() == 0 && this.z == 0; 
   }
 
   public boolean isAxisZ(){
-    return coodenatesXY.getX() == 0 && coodenatesXY.getY() == 0;
+    return this.getX() == 0 && this.getY() == 0;
   }
  
   public boolean isAxis(){
@@ -52,11 +51,11 @@ public class Ponto3DComp {
   }
 
   public float getX(){
-    return this.coodenatesXY.getX();
+    return this.coordenatesXY.getX();
   }
 
   public float getY(){
-    return this.coodenatesXY.getY();
+    return this.coordenatesXY.getY();
   }
 
   public float getZ(){

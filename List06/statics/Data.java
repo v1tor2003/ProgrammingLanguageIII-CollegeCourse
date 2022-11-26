@@ -1,5 +1,7 @@
 package List06.statics;
 
+import java.util.Calendar;
+
 public class Data{
   private static final int feb = 2, febDuration = 28, longerMonth = 31, defaultMonth = 30;
   private static final String diasSemana [] = new String [] {"sabado", "domingo", "segunda",
@@ -84,6 +86,15 @@ public class Data{
     return result;
   }
 
+  public static Data getCurrentData(){
+    Calendar currentData = Calendar.getInstance();
+    int dia = currentData.get(Calendar.DAY_OF_MONTH);
+    int mes = currentData.get(Calendar.MONTH);
+    int ano = currentData.get(Calendar.YEAR);
+
+    return new Data(dia, mes+1, ano);
+  }
+
   
   private static float findName(int dia, int mes, int ano){
     return (float) (dia + (2.0 * mes) + (3.0 * (mes + 1.0) / 5.0) + ano + (ano / 4.0) - (ano / 100.0) + (ano / 400.0) + 2.0);
@@ -140,6 +151,10 @@ public class Data{
 
   public static boolean isBissexto(int ano){
     return ano % 4 == 0 || ano % 100 == 0 || ano % 400 == 0;
+  }
+
+  public boolean isEquals(Data other){
+    return howManyDays(other) == 0;
   }
 
   public static boolean isBissexto(Data d){

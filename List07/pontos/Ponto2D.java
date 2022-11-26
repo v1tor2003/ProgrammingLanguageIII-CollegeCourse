@@ -1,4 +1,6 @@
-package List07.base;
+package List07.pontos;
+
+import List07.base.PontoBase;
 
 public class Ponto2D extends PontoBase {
   
