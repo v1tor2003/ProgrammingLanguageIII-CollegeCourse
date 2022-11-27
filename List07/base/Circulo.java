@@ -1,3 +1,5 @@
+package List07.base;
+
 import List07.pontos.Ponto2D;
 
 public class Circulo extends Ponto2D{
@@ -66,7 +68,7 @@ public class Circulo extends Ponto2D{
 
   @Override
   public String toString(){
-    return String.format("Circunferencia: (%s, %s), raio %f", this.getX(), this.getY(), this.raio);
+    return String.format("(%s, %s), raio %.2f", this.getX(), this.getY(), this.raio);
   }
 
   public static float getPower(){

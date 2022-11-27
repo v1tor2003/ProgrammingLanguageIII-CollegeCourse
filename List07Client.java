@@ -1,3 +1,5 @@
+import List07.figuras.Cilindro;
+import List07.figuras.Cone;
 import List07.livro.Livro;
 import List07.livro.LivroBiblioteca;
 import List07.livro.LivroLivraria;
@@ -80,5 +82,20 @@ public class List07Client {
     System.out.printf("Estoque: %d\nTotal Arrecadado: %.2f\nLivros Vendidos: %s\n", LivroLivraria.getEstoque(), 
                               LivroLivraria.getTotalArrecadado(), LivroLivraria.getTotalDeLivrosVendidos());
     
+    Cilindro cilindro = new Cilindro(1, 2, 3, 2);                              
+    Cone cone = new Cone(1, 2, 3, 2);
+
+    System.out.println("\nTesting Cilindro:");
+    System.out.println(cilindro);
+    System.out.println("Area: " + cilindro.area());
+    System.out.println("Volume: " + cilindro.volume());
+
+    System.out.println("\nTesting Cone:");
+    System.out.println(cone);
+    System.out.println("Area: " + cone.area());
+    System.out.println("Volume: " + cone.volume());
+
+
+
   }
 }
