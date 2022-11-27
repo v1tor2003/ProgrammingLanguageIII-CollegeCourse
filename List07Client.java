@@ -1,5 +1,6 @@
 import List07.livro.Livro;
 import List07.livro.LivroBiblioteca;
+import List07.livro.LivroLivraria;
 import List07.pontos.Ponto2D;
 import List07.pontos.Ponto3DHeranca;
 import List07.pontos.Ponto3DComp;
@@ -51,13 +52,33 @@ public class List07Client {
     System.out.println("Distancia: " + p3DAgre.distance(pointDist.getX(), pointDist.getY(), pointDist.getY()));
 
     Livro book = new Livro("Dracula", "Alguem");
-    Livro book1 = new Livro("Arte do Sexo", "Eu", 10, 10, 3, 1971);
+    Livro book1 = new Livro("Romeu e Julieta", "Outro Alguem", 10, 10, 3, 1971);
+    LivroBiblioteca livroBiblioteca = new LivroBiblioteca("Harry Potter", "Alguem Rolling");
+    LivroLivraria livroLivraria = new LivroLivraria("Menino do Espelho", "Alguem 3");
+    LivroLivraria l2 = new LivroLivraria("2", "null");
+
+
+    System.out.println("\nTesting Base Livro:");
     System.out.println("\n" + book);
     System.out.println("\n" + book1);
     System.out.println("isOlder: "+ book.isOlder(book1));
-    LivroBiblioteca livroBiblioteca = new LivroBiblioteca("Sexo 2", "Eu");
+
+    System.out.println("\nTesting Livro Biblioteca:");
     System.out.println(livroBiblioteca);
     livroBiblioteca.setEmprestimo(true, Data.getCurrentData());
     System.out.println(livroBiblioteca);
+    System.out.println("Devolvendo livro...");
+    livroBiblioteca.returnBook();
+    System.out.println(livroBiblioteca);
+
+    System.out.println("Testing Livro Livraria:");
+    System.out.println(livroLivraria);
+    System.out.println("\n"+ l2);
+
+    livroLivraria.sell();
+    System.out.println("\n"+livroLivraria);
+    System.out.printf("Estoque: %d\nTotal Arrecadado: %.2f\nLivros Vendidos: %s\n", LivroLivraria.getEstoque(), 
+                              LivroLivraria.getTotalArrecadado(), LivroLivraria.getTotalDeLivrosVendidos());
+    
   }
 }

@@ -71,9 +71,27 @@ public class LivroBiblioteca extends Livro{
   public String toString(){
     String str = super.toString();
     if (emprestado)
-      return str += String.format("\nLivro Emprestado, devolucao prevista para: %s\n", this.dataDevolucao);
+      return str += String.format("\nStatus: emprestado, devolucao prevista para: %s\n", this.dataDevolucao);
     else
-      return str += String.format("\nLivro Disponivel\n");
+      return str += String.format("\nStatus: disponivel\n");
   }
 
+  public boolean isAvaliable() {
+
+    return !this.emprestado;
+  }
+
+  public void borrow(Data devolucao) {
+    if(isAvaliable())
+      setEmprestimo(true, dataDevolucao);
+    else
+      System.out.println("Livro indisponivel para emprestimo.");
+  }
+  
+  public void returnBook(){
+    if(!isAvaliable())
+      setEmprestimo(false);
+    else
+      System.out.println("Voce nao pode devolver um livro que nao foi emprestado.");  
+  }
 }

@@ -55,4 +55,12 @@ public class Livro {
   public Data getPublicacao(){
     return anoPublicacao;
   }
+
+  public String getTitulo(){
+    return this.titulo;
+  }
+
+  public String getAutor(){
+    return this.autor;
+  }
 }
