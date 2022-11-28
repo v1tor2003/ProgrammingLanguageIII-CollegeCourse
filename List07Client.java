@@ -1,13 +1,16 @@
-import List07.figuras.Cilindro;
-import List07.figuras.Cone;
-import List07.livro.Livro;
-import List07.livro.LivroBiblioteca;
-import List07.livro.LivroLivraria;
-import List07.pontos.Ponto2D;
-import List07.pontos.Ponto3DHeranca;
-import List07.pontos.Ponto3DComp;
-import List07.pontos.Ponto3DAgre;
-import List06.statics.Data;
+import List06.base.statics.Data;
+import List07.base.Aluno;
+import List07.base.alunos.AlunoGraduacao;
+import List07.base.alunos.AlunoPosgraduacao;
+import List07.base.figuras.Cilindro;
+import List07.base.figuras.Cone;
+import List07.base.livro.Livro;
+import List07.base.livro.LivroBiblioteca;
+import List07.base.livro.LivroLivraria;
+import List07.base.pontos.Ponto2D;
+import List07.base.pontos.Ponto3DAgre;
+import List07.base.pontos.Ponto3DComp;
+import List07.base.pontos.Ponto3DHeranca;
 
 public class List07Client {
   public static void main(String[]args) {
@@ -94,6 +97,15 @@ public class List07Client {
     System.out.println(cone);
     System.out.println("Area: " + cone.area());
     System.out.println("Volume: " + cone.volume());
+
+    Data data = new Data(16, 8, 2019);
+    Aluno aluno = new Aluno("Vitor Pires", 202121120, data);
+    AlunoGraduacao alunoGraduacao = new AlunoGraduacao(aluno, 3, "computacao");
+    AlunoPosgraduacao alunoPosgraduacao = new AlunoPosgraduacao(alunoGraduacao, "Professor X", "Projeto Y", 'M');
+
+    System.out.println(aluno);
+    System.out.println(alunoGraduacao);
+    System.out.println(alunoPosgraduacao);
 
 
 

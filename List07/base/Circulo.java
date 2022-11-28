@@ -1,6 +1,6 @@
 package List07.base;
 
-import List07.pontos.Ponto2D;
+import List07.base.pontos.Ponto2D;
 
 public class Circulo extends Ponto2D{
   private float raio;

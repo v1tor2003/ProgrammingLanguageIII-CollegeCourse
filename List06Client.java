@@ -1,7 +1,7 @@
 
-import List06.statics.Data;
-import List06.statics.TimeAsInt;
-import List06.statics.Contato;
+import List06.base.statics.Contato;
+import List06.base.statics.Data;
+import List06.base.statics.TimeAsInt;
 
 public class List06Client {
   public static void main(String[]args) {
