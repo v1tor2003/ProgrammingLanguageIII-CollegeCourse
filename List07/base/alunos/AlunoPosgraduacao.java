@@ -45,7 +45,7 @@ public class AlunoPosgraduacao extends AlunoGraduacao {
   @Override
   protected boolean isRegular(){
     int months = super.calculateMonthsSinceAdmssion();
-    
+
     if(this.nivel == Nivel.M)
       return months <= mestradoRegular;
     
@@ -54,7 +54,7 @@ public class AlunoPosgraduacao extends AlunoGraduacao {
 
   @Override
   public String toString(){
-    return String.format("%sOrientador: %s\nProjeto: %s\nNivel: %s\n", super.toString(), this.nomeOrientador,this.tituloProjeto, this.nivel);
+    return String.format("%sNivel: %s\nOrientador: %s\nProjeto: %s\n", super.toString(), this.nivel, this.nomeOrientador,this.tituloProjeto);
   }
 
 
