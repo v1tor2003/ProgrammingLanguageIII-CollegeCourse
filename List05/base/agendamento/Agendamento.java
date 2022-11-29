@@ -29,8 +29,13 @@ public class Agendamento implements Comparable<Agendamento>{
   }
 
   @Override
-  public int compareTo(Agendamento o) {
+  public int compareTo(Agendamento obj) {
     // TODO Auto-generated method stub
-    return this.person.getNome().length() > o.person.getNome().length() ? 1 : -1;
+    if(this.scheduledTime.isLower(obj.scheduledTime))
+      return -1;
+    else if(this.scheduledTime.isGreater(obj.scheduledTime))
+      return 1;
+    
+    return 0;
   }
 }

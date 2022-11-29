@@ -1,28 +1,21 @@
 import base.agendamento.Agendamento;
-import base.agendamento.TestSimples;
-import base.singly_list.SinglyLinkedList;
+import base.agendamento.Agendamentos;
 
 public class Main {
   public static void main (String[] args){
-    TestSimples vitor = new TestSimples("Vitor", 1);
-    TestSimples bruno = new TestSimples("Bruno", 2);
-    TestSimples pedro = new TestSimples("Pedro", 3);
-    TestSimples luiz = new TestSimples("Luiz", 4);
-    TestSimples inavlida = null;
-    TestSimples pessoaEspecial = new TestSimples("ESPECIAl", 6);
+    
+    // some fix to do
+    Agendamento ag1 = new Agendamento("vitor", "vitor.pr@teste", "7398845529", 1, 2, 2022);
+    Agendamento ag2 = new Agendamento("vitor", "vitor.pr@teste", "7398845529", 1, 2, 2022);
+    Agendamento ag3 = new Agendamento("fulano", "fulano.pr@teste", "7398845529", 20, 2, 2022);
+    Agendamento ag4 = new Agendamento("ciclano", "ciclano.pr@teste", "7398845529", 20, 3, 2022);
 
-    SinglyLinkedList<TestSimples> list = new SinglyLinkedList<>();
-    list.insertAtEnd(vitor);
-    list.insertAtEnd(bruno);
-    list.insertAtEnd(pedro);
-    list.insertAfter(bruno, pessoaEspecial);
-    list.insertAtStart(luiz);
+    Agendamentos agendamentos = new Agendamentos();
+    agendamentos.toSchedule(ag1);
+    agendamentos.toSchedule(ag3);
+    agendamentos.toSchedule(ag4);
 
-    list.show();
-System.out.println("return " + list.removeAfter(vitor));
-  
-System.out.println("\n");
-    list.show();
+    agendamentos.show();
 
 
   }

@@ -10,7 +10,10 @@ public class Agendamentos {
   }
 
   public void toSchedule(Agendamento obj){
-    list.insertAtEnd(obj);
+    if(!list.isPresent(obj))
+      list.insertAtEnd(obj);
+    else
+      System.out.println("hora/data invalida, ja existe agendamento marcado");
   }
 
   public Object removeSchedule(Agendamento reference){

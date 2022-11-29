@@ -28,6 +28,11 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     this.tail = null;
     this.size = 0;
   }
+
+  public int size(){
+    return this.size;
+  }
+
   @Override
   public boolean isPresent(T node){
     Node<T> testNode = findNode(this.head, node);
@@ -174,6 +179,13 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     return temp;
   }
 
+  private Node<T> findBeforeNode(Node<T> start, T reference){
+    if(start.next == null || start.next.data.equals(reference))
+      return start;
+
+    return findBeforeNode(start.next, reference);
+  }
+
   public Node<T> removeFromEnd() {
     // TODO Auto-generated method stub
     if(isEmpty()){
@@ -197,5 +209,15 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     this.tail = previousEnd;
     
     return end;
+  }
+
+  public Node<T> remove(T reference){
+    if(this.head.data.equals(reference))
+      return removeFromStart();
+    else if(this.tail.data.equals(reference))
+      return removeFromEnd();
+    
+    Node <T> beforeRef = findBeforeNode(head, reference);
+    return removeAfter(beforeRef.data);
   }
 }
