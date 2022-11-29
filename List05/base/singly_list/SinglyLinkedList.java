@@ -12,7 +12,7 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
       this.data = obj;
       this.next = null;
     }
-  
+
     public String toString(){
       return String.format("%s", this.data);
     }
@@ -42,13 +42,13 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
   }
 
   @Override
-  public void first(){
-    System.out.println(this.head);
+  public String first(){
+    return this.head.toString();
   }
 
   @Override
-  public void last(){
-    System.out.println(this.tail);
+  public String last(){
+    return this.tail.toString();
   }
 
   @Override
@@ -84,7 +84,7 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
   }
 
   @Override
-  public void insertAfter(T data, T reference) {
+  public void insertAfter(T reference, T data) {
     // TODO Auto-generated method stub
     Node<T> newNode = createNode(data);
     Node<T> placeToInsert;  
@@ -117,7 +117,7 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
   
   private Node<T> findNode(Node<T> start, T reference) {
     // TODO Auto-generated method stub
-    if((start.equals(reference)) || (start.next == null))
+    if((start.data.equals(reference) || (start.next == null)))
       return start;
 
     return findNode(start.next, reference);
@@ -197,17 +197,5 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     this.tail = previousEnd;
     
     return end;
-  }
-
-  public Node<T> remove(T reference){
-    if(isEmpty()){
-      System.out.println("List is empty");
-      return null;
-    }
-
-    if ((reference == this.tail) || (this.head == this.tail))
-      return removeFromEnd();
-
-    return removeFromStart();
   }
 }

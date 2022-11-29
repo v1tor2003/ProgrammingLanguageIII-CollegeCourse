@@ -8,8 +8,8 @@ public interface SinglyListI<T> {
   void insertAtStart(T data);
   void insertAfter(T data, T reference);
   void insertAtEnd(T data);
-  void first();
-  void last();
+  String first();
+  String last();
   boolean isPresent(T data);
   //T findNode(T start, T reference);
   //T createNode(T data);

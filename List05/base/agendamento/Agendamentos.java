@@ -2,15 +2,15 @@ package base.agendamento;
 
 import base.singly_list.SinglyLinkedList;
 
-public class ListaDeAgendamentos {
+public class Agendamentos {
   private SinglyLinkedList<Agendamento> list;
   
-  public ListaDeAgendamentos(){
+  public Agendamentos(){
     list = new SinglyLinkedList<>();
   }
 
   public void toSchedule(Agendamento obj){
-    list.insertAtStart(obj);
+    list.insertAtEnd(obj);
   }
 
   public Object removeSchedule(Agendamento reference){
@@ -22,7 +22,7 @@ public class ListaDeAgendamentos {
     list.show();
   }
 
-  // ListaDeAgendamentos.ordernar is the one Left, 
+  // Agendamentos.ordernar is the one Left, 
   // Also we need to fix isPresent()
   // We are getting troubles comparing, it´s comparing the class
   // Not the scheduleTime as we want

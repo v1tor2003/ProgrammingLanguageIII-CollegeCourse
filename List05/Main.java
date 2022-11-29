@@ -1,19 +1,29 @@
 import base.agendamento.Agendamento;
+import base.agendamento.TestSimples;
 import base.singly_list.SinglyLinkedList;
 
 public class Main {
   public static void main (String[] args){
-    Agendamento test = new Agendamento("Vitor",null , "7398845529", 1, 1, 2022);
-    Agendamento test1 = new Agendamento("Vitor",null , "7398845521", 2, 1, 2022);
-    Agendamento test2 = new Agendamento("Sexo",null , "7398845520", 2, 1, 2022);
-    SinglyLinkedList<Agendamento> list = new SinglyLinkedList<>();
+    TestSimples vitor = new TestSimples("Vitor", 1);
+    TestSimples bruno = new TestSimples("Bruno", 2);
+    TestSimples pedro = new TestSimples("Pedro", 3);
+    TestSimples luiz = new TestSimples("Luiz", 4);
+    TestSimples inavlida = null;
+    TestSimples pessoaEspecial = new TestSimples("ESPECIAl", 6);
 
-    list.insertAtEnd(test);
-    list.insertAtEnd(test1);
-    list.insertAfter(test2, test);
-
-
+    SinglyLinkedList<TestSimples> list = new SinglyLinkedList<>();
+    list.insertAtEnd(vitor);
+    list.insertAtEnd(bruno);
+    list.insertAtEnd(pedro);
+    list.insertAfter(bruno, pessoaEspecial);
+    list.insertAtStart(luiz);
 
     list.show();
+System.out.println("return " + list.removeAfter(vitor));
+  
+System.out.println("\n");
+    list.show();
+
+
   }
 }

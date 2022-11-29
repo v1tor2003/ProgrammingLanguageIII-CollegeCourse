@@ -2,7 +2,7 @@ package base.agendamento;
 
 import base.data_hora.DataHoraComp;
 
-public class Agendamento {
+public class Agendamento implements Comparable<Agendamento>{
   private Contato person;
   private DataHoraComp scheduledTime;
 
@@ -28,15 +28,9 @@ public class Agendamento {
     return str;
   }
 
-  private boolean compare(Agendamento obj){
-    return this.scheduledTime.isEqual(obj.scheduledTime); 
-  }
-
   @Override
-  public boolean equals(Object obj){
-    if (obj == this)
-      return true;
-    
-    return compare((Agendamento) obj);
+  public int compareTo(Agendamento o) {
+    // TODO Auto-generated method stub
+    return this.person.getNome().length() > o.person.getNome().length() ? 1 : -1;
   }
 }
