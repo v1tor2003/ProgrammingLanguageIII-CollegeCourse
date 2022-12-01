@@ -14,14 +14,9 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     public String toString(){
       return String.format("%s", this.data);
     }
-
-    public T getData(){
-      return this.data;
-    }
-    
   }
 
-  protected Node<T> head;
+  private Node<T> head;
   private Node<T> tail;
   private int size;
 
@@ -128,6 +123,19 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
       return start;
 
     return findNode(start.next, reference);
+  }
+
+  protected Node<T> findNode(String reference){
+    Node<T> temp = this.head;
+
+    while(temp.next != null){
+      if(temp.data.equals(reference))
+        return temp;
+
+      temp = temp.next;
+    }
+
+    return null;
   }
 
   public Node<T> createNode(T data) {

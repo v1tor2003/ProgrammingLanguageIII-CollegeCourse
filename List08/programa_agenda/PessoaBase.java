@@ -1,7 +1,7 @@
 package List08.programa_agenda;
 import List06.base.statics.Data;
 
-public class PessoaBase {
+public class PessoaBase implements Comparable<PessoaBase>{
   private String name;
   private String address;  
   private String phoneNumber;
@@ -118,5 +118,12 @@ public class PessoaBase {
   public String toString(){
     return String.format("Nome: %s\nEndereco: %s\nEmail: %s\nTelefone: %s\nAniversario: %s\n", 
                           this.getName(), this.getAddress(), this.getEmail(), this.getPhone(), formatBirthDate());
+  }
+
+
+  @Override
+  public int compareTo(PessoaBase obj) {
+    // TODO Auto-generated method stub
+    return 0;
   }
 }

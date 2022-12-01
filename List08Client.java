@@ -44,9 +44,14 @@ public class List08Client {
     //System.out.println(pessoaFisica);
     //System.out.println(pessoaJuridica);
     Agenda myAgenda = new Agenda();
+    System.out.println("\n\n");
+    
     myAgenda.add(pessoaBase);
     myAgenda.add(pessoaFisica);
-    myAgenda.show();
-    System.out.println("Contato achado"+ myAgenda.search("1120755250"));
+    myAgenda.add(pessoaJuridica);
+    myAgenda.add(pessoaJuridica1);
+   
+    System.out.println(myAgenda.search("11207552550"));
+    
   }
 }

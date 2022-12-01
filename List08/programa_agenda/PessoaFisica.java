@@ -37,13 +37,25 @@ public class PessoaFisica extends PessoaBase{
   public String toString(){
     return String.format("%sCPF: %s\n", super.toString(), this.getCPF());
   }
-
-  public boolean equals(PessoaFisica obj){
-    return this.CPF.equals(obj.CPF);
+ 
+  public int compareTo(PessoaFisica obj){
+    if(this.CPF.length() == obj.CPF.length() && checkFullString(CPF))
+      return 0;
+    else if(this.CPF.length() < obj.CPF.length())
+      return -1;
+    else 
+      return 1;
   }
 
-  public boolean equals(String cpf){
-    return this.CPF.equals(cpf);
+  public boolean checkFullString(String cpf){
+    final char [] objCpf = this.CPF.toCharArray();
+    final char [] otherCpf = cpf.toCharArray();
+
+    for(int i = 0; i < this.CPF.length(); i++)
+      if (objCpf[i] != otherCpf[i])
+        return false;
+
+    return true;
   }
   
 }

@@ -4,7 +4,6 @@ import List06.base.statics.Data;
 public class PessoaJuridica extends PessoaBase{
   final private static int fullCnpjSize = 18;
   final private static int minCnpjSize = 14;
-
   private String CNPJ;
 
   public PessoaJuridica(String name, String address, String phoneNumber, String email, int dia, int mes, int ano, String cnpj) {
@@ -39,12 +38,24 @@ public class PessoaJuridica extends PessoaBase{
     return String.format("%sCNPJ: %s\n", super.toString(), this.getcnpj());
   }
 
-  public boolean equals(PessoaJuridica obj){
-    return this.CNPJ.equals(obj.CNPJ);
+  public int compareTo(PessoaJuridica obj){
+    if(this.CNPJ.length() == obj.CNPJ.length() && checkFullString(  CNPJ))
+      return 0;
+    else if(this.CNPJ.length() < obj.CNPJ.length())
+      return -1;
+    else 
+      return 1;
   }
 
-  public boolean equals(String cnpj){
-    return this.CNPJ.equals(cnpj);
+  public boolean checkFullString(String cpf){
+    final char [] objCpf = this.CNPJ.toCharArray();
+    final char [] otherCpf = cpf.toCharArray();
+
+    for(int i = 0; i < this.CNPJ.length(); i++)
+      if (objCpf[i] != otherCpf[i])
+        return false;
+
+    return true;
   }
   
 }
