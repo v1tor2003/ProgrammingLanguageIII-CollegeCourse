@@ -41,5 +41,9 @@ public class PessoaFisica extends PessoaBase{
   public boolean equals(PessoaFisica obj){
     return this.CPF.equals(obj.CPF);
   }
+
+  public boolean equals(String cpf){
+    return this.CPF.equals(cpf);
+  }
   
 }

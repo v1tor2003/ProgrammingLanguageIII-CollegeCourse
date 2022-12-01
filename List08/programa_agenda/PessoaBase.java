@@ -14,7 +14,9 @@ public class PessoaBase {
       this.email = email;
       this.phoneNumber = phoneNumber;
     }else{
-      System.out.println("Pessoa nao criada, dados insuficientes.");
+      this.name = null;
+      this.email = null;
+      this.phoneNumber = null;
     }
 
     if(validateAdrres(address))

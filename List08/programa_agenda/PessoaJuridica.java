@@ -42,6 +42,10 @@ public class PessoaJuridica extends PessoaBase{
   public boolean equals(PessoaJuridica obj){
     return this.CNPJ.equals(obj.CNPJ);
   }
+
+  public boolean equals(String cnpj){
+    return this.CNPJ.equals(cnpj);
+  }
   
 }
 

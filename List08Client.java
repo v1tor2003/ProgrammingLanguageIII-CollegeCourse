@@ -1,6 +1,5 @@
 import List08.pessoas.*;
 import List08.shapes.*;
-//import base.singly_list.SinglyLinkedList;
 import List08.programa_agenda.*;
 
 public class List08Client {
@@ -33,15 +32,21 @@ public class List08Client {
     System.out.println(prefeito);
     System.out.println(gov);
 
-    PessoaBase pessoaBase = new PessoaBase("Vitor", "Rua Sao Goncalo, 50", "7398545529",
+    PessoaBase pessoaBase = new PessoaBase("Vitor", "Ilheus, 50", "7398545529",
                                            "vitor.pr@teste.com", 29, 9, 2003);
-    PessoaFisica pessoaFisica = new PessoaFisica("Vitor","Rua Sao Goncalo, 50", "7398545529",
+    PessoaFisica pessoaFisica = new PessoaFisica("Vitor","Ilheus, 50", "7398545529",
                                            "vitor.pr@teste.com", 29, 9, 2003, "11207552550" );
-    PessoaJuridica pessoaJuridica = new PessoaJuridica("Vitor","Rua Sao Goncalo, 50", "7398545529",
+    PessoaJuridica pessoaJuridica = new PessoaJuridica("Vitor","Ilheus, 50", "7398545529",
                                            "vitor.pr@teste.com", 29, 9, 2003, "11.222.333/0001-00" );
-    System.out.println(pessoaBase);
-    System.out.println(pessoaFisica);
-    System.out.println(pessoaJuridica);
-    //SinglyLinkedList<PessoaBase> list = new SinglyLinkedList<>();
+    PessoaJuridica pessoaJuridica1 = new PessoaJuridica("teste","Ilheus, 50", "1122334455",
+                                           "teste.pr@teste.com", 29, 9, 2003, "11.222.333/0001-00" );
+    //System.out.println(pessoaBase);
+    //System.out.println(pessoaFisica);
+    //System.out.println(pessoaJuridica);
+    Agenda myAgenda = new Agenda();
+    myAgenda.add(pessoaBase);
+    myAgenda.add(pessoaFisica);
+    myAgenda.show();
+    System.out.println("Contato achado"+ myAgenda.search("1120755250"));
   }
 }
