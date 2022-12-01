@@ -38,8 +38,10 @@ public class PessoaJuridica extends PessoaBase{
     return String.format("%sCNPJ: %s\n", super.toString(), this.getcnpj());
   }
 
-  public int compareTo(PessoaJuridica obj){
-    if(this.CNPJ.length() == obj.CNPJ.length() && checkFullString(  CNPJ))
+  @Override
+  public int compareTo(PessoaBase o){
+    PessoaJuridica obj = (PessoaJuridica) o;
+    if(this.CNPJ.length() == obj.CNPJ.length() && checkFullString(obj.CNPJ))
       return 0;
     else if(this.CNPJ.length() < obj.CNPJ.length())
       return -1;
@@ -47,12 +49,12 @@ public class PessoaJuridica extends PessoaBase{
       return 1;
   }
 
-  public boolean checkFullString(String cpf){
-    final char [] objCpf = this.CNPJ.toCharArray();
-    final char [] otherCpf = cpf.toCharArray();
+  public boolean checkFullString(String cnpj){
+    final char [] objCnpj = this.CNPJ.toCharArray();
+    final char [] otherCnpj = cnpj.toCharArray();
 
     for(int i = 0; i < this.CNPJ.length(); i++)
-      if (objCpf[i] != otherCpf[i])
+      if (objCnpj[i] != otherCnpj[i])
         return false;
 
     return true;

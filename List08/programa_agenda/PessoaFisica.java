@@ -38,8 +38,10 @@ public class PessoaFisica extends PessoaBase{
     return String.format("%sCPF: %s\n", super.toString(), this.getCPF());
   }
  
-  public int compareTo(PessoaFisica obj){
-    if(this.CPF.length() == obj.CPF.length() && checkFullString(CPF))
+  @Override
+  public int compareTo(PessoaBase o){
+    PessoaFisica obj = (PessoaFisica) o;
+    if(this.CPF.length() == obj.CPF.length() && checkFullString(obj.CPF))
       return 0;
     else if(this.CPF.length() < obj.CPF.length())
       return -1;
