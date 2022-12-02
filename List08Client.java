@@ -19,7 +19,7 @@ public class List08Client {
     Pessoa pessoa = new Pessoa("Vitor", 123456, 29, 9, 2003);
     Funcionario funcionario = new Funcionario("Vitor", 123456, 29, 9, 2003, 1200, 30, 11, 2022);
     ChefeDeDepartamento chefe = new ChefeDeDepartamento("Vitor", 12345, 29, 9, 2003, 5000, 30, 11, 2022, "testes", 10, 1, 2023);
-
+    System.out.println("Testing Pessoas:");
     System.out.println("\n" + pessoa);
     System.out.println("\n" + funcionario);
     System.out.println("\n" + chefe);
@@ -28,12 +28,13 @@ public class List08Client {
     Politico politico = new Politico("Vitor", 123456, 29,9, 2003, "VP", number);
     Prefeito prefeito = new Prefeito("Vtior", 123456, 29, 9, 2003, "VP", number, "vitorlandia");
     Governador gov = new Governador("Vtior", 123456, 29, 9, 2003, "VP", number, "meuestado");
+    
+    System.out.println("Testing Politicos:");
     System.out.println(politico);
     System.out.println(prefeito);
     System.out.println(gov);
 
-    PessoaBase pessoaBase = new PessoaBase("Vitor", "Ilheus, 50", "7398545529",
-                                           "vitor.pr@teste.com", 29, 9, 2003);
+    
     PessoaFisica pessoaFisica = new PessoaFisica("Vitor","Ilheus, 50", "7398545529",
                                            "vitor.pr@teste.com", 29, 9, 2003, "11207552550" );
     PessoaJuridica pessoaJuridica = new PessoaJuridica("Vitor","Ilheus, 50", "7398545529",
@@ -44,14 +45,19 @@ public class List08Client {
     //System.out.println(pessoaFisica);
     //System.out.println(pessoaJuridica);
     Agenda myAgenda = new Agenda();
-    System.out.println("\n\n");
-    
-    myAgenda.add(pessoaBase);
+    System.out.println("\n\n"); 
+  
     myAgenda.add(pessoaFisica);
     myAgenda.add(pessoaJuridica);
     myAgenda.add(pessoaJuridica1);
-   
-    System.out.println(myAgenda.search("11207552550"));
-    
+
+    System.out.println("Finding by CPF");
+    System.out.println(myAgenda.searchPessoaFisica("11207552550"));
+    System.out.println("Finding by CNPJ");
+    System.out.println(myAgenda.searchPessoaJuridica("11.222.333/0001-00"));
+    System.out.println("Finding by CPF (out of list)");
+    System.out.println(myAgenda.searchPessoaFisica("11111111111"));
+
+    System.out.println(myAgenda);
   }
 }

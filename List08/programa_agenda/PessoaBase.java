@@ -120,9 +120,20 @@ public class PessoaBase implements Comparable<PessoaBase>{
                           this.getName(), this.getAddress(), this.getEmail(), this.getPhone(), formatBirthDate());
   }
 
+  private boolean equalsPessoaBase(PessoaBase o){
+    if (compareTo(o) == 0)
+      return true;
+ 
+    return false;
+  }
 
   @Override
-  public int compareTo(PessoaBase obj) {
+  public boolean equals(Object obj){
+    return equalsPessoaBase((PessoaBase) obj);
+  }
+
+  @Override
+  public int compareTo(PessoaBase o) {
     // TODO Auto-generated method stub
     return 0;
   }

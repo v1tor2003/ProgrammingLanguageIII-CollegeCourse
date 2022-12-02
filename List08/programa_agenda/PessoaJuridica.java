@@ -38,26 +38,26 @@ public class PessoaJuridica extends PessoaBase{
     return String.format("%sCNPJ: %s\n", super.toString(), this.getcnpj());
   }
 
-  @Override
-  public int compareTo(PessoaBase o){
-    PessoaJuridica obj = (PessoaJuridica) o;
-    if(this.CNPJ.length() == obj.CNPJ.length() && checkFullString(obj.CNPJ))
-      return 0;
-    else if(this.CNPJ.length() < obj.CNPJ.length())
-      return -1;
-    else 
+  private int compareLocal(String otherInfo) {
+    // TODO Auto-generated method stub
+    if(this.CNPJ.compareTo(otherInfo) > 0){
       return 1;
+    }
+    else if (this.CNPJ.compareTo(otherInfo) < 0){
+      return -1;
+    }
+    
+    return 0;
   }
-
-  public boolean checkFullString(String cnpj){
-    final char [] objCnpj = this.CNPJ.toCharArray();
-    final char [] otherCnpj = cnpj.toCharArray();
-
-    for(int i = 0; i < this.CNPJ.length(); i++)
-      if (objCnpj[i] != otherCnpj[i])
-        return false;
-
-    return true;
+  
+  @Override
+  public int compareTo(PessoaBase obj) {
+    // TODO Auto-generated method stub
+    if(obj instanceof PessoaFisica)
+      return -1;
+    PessoaJuridica newObj = (PessoaJuridica) obj;
+    String ref = newObj.CNPJ;
+    return compareLocal(ref);
   }
   
 }

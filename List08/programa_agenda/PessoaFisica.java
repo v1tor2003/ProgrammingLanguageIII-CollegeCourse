@@ -37,27 +37,27 @@ public class PessoaFisica extends PessoaBase{
   public String toString(){
     return String.format("%sCPF: %s\n", super.toString(), this.getCPF());
   }
- 
-  @Override
-  public int compareTo(PessoaBase o){
-    PessoaFisica obj = (PessoaFisica) o;
-    if(this.CPF.length() == obj.CPF.length() && checkFullString(obj.CPF))
-      return 0;
-    else if(this.CPF.length() < obj.CPF.length())
-      return -1;
-    else 
+  
+  private int compareLocal(String otherInfo) {
+    // TODO Auto-generated method stub
+    if(this.CPF.compareTo(otherInfo) > 0){
       return 1;
+    }
+    else if (this.CPF.compareTo(otherInfo) < 0){
+      return -1;
+    }
+    
+    return 0;
   }
-
-  public boolean checkFullString(String cpf){
-    final char [] objCpf = this.CPF.toCharArray();
-    final char [] otherCpf = cpf.toCharArray();
-
-    for(int i = 0; i < this.CPF.length(); i++)
-      if (objCpf[i] != otherCpf[i])
-        return false;
-
-    return true;
+  
+  @Override
+  public int compareTo(PessoaBase obj) {
+    // TODO Auto-generated method stub
+    if(obj instanceof PessoaJuridica)
+      return -1;
+    PessoaFisica newObj = (PessoaFisica) obj;
+    String ref = newObj.CPF;
+    return compareLocal(ref);
   }
   
 }

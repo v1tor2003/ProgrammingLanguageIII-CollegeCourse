@@ -3,7 +3,7 @@ package List08.singly_list;
 public class SinglyLinkedList<T> implements SinglyListI<T>{
   
   protected static class Node<T> {
-    private T data;
+    public T data;
     private Node<T> next;
   
     Node(T obj){
@@ -16,7 +16,7 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     }
   }
 
-  private Node<T> head;
+  protected Node<T> head;
   private Node<T> tail;
   private int size;
 
@@ -31,7 +31,7 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
   }
 
   @Override
-  public boolean isPresent(T node){
+  public boolean contains(T node){
     Node<T> testNode = findNode(this.head, node);
     
     return testNode != null;
@@ -51,22 +51,6 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
   @Override
   public String last(){
     return this.tail.toString();
-  }
-
-  @Override
-  public void show() {
-    // TODO Auto-generated method stub
-    Node<T> currentNode = this.head;
-
-    if(isEmpty()){
-      System.out.println("List is empty");
-    }else{
-      while(currentNode.next != null){
-        System.out.println(currentNode);
-        currentNode = currentNode.next;
-      }
-      System.out.println(currentNode);
-    }
   }
 
   @Override
@@ -119,23 +103,13 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
   
   protected Node<T> findNode(Node<T> start, T reference) {
     // TODO Auto-generated method stub
-    if((start.data.equals(reference) || (start.next == null)))
+    if(start == null)
+      return null;
+    
+    if((start.data.equals(reference)))
       return start;
 
     return findNode(start.next, reference);
-  }
-
-  protected Node<T> findNode(String reference){
-    Node<T> temp = this.head;
-
-    while(temp.next != null){
-      if(temp.data.equals(reference))
-        return temp;
-
-      temp = temp.next;
-    }
-
-    return null;
   }
 
   public Node<T> createNode(T data) {
@@ -143,6 +117,12 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     Node<T> node = new Node<T>(data);
 
     return node;
+  }
+
+  @Override
+  public void clear(){
+    this.head = null;
+    this.size = 0;
   }
 
   private Node<T> beforeEnd(Node<T> start){
@@ -229,5 +209,20 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     
     Node <T> beforeRef = findBeforeNode(head, reference);
     return removeAfter(beforeRef.data);
+  }
+
+  public String toString(){
+    if(isEmpty())
+      return "List is empty";
+    else{
+      Node<T> currentNode = this.head;
+      String list = "";
+      while(currentNode.next != null){
+        list += currentNode + "\n";
+        currentNode = currentNode.next;
+      }
+      list += currentNode;
+      return list;
+    }
   }
 }

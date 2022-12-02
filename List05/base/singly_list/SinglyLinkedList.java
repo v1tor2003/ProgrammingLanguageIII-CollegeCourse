@@ -16,7 +16,6 @@ public class SinglyLinkedList<T> implements SinglyListI<T>{
     public String toString(){
       return String.format("%s", this.data);
     }
-    
   }
 
   private Node<T> head;

@@ -11,17 +11,38 @@ public class Agenda extends SinglyLinkedList<PessoaBase>{
     super.insertAtEnd(obj);
   }
 
-  public void show(){
-    super.show();
+  public String toString(){
+    return "Agenda: \n\n" + super.toString();
   }
 
-  public String search(String reference){
-    Node<PessoaBase> result = findNode(reference);
-    if(!(result == null))
-      return result.toString();
+  public PessoaBase search(PessoaBase reference){
     
-    return "Referencia invalida";
+    Node<PessoaBase> foundNode = findNode(this.head, reference);
+
+    if(foundNode == null)
+      return null;
+
+    return foundNode.data;
   }
+
+  private PessoaFisica setUpPessoaFisicaToCompare(String info){
+    return new PessoaFisica("", "", "", "", 0,0,0, info);
+  }
+
+  private PessoaJuridica setUpPessoaJuridicaToCompare(String info){
+    return new PessoaJuridica("", "", "", "", 0,0,0, info);
+  }
+
+  public PessoaBase searchPessoaFisica(String cpf){
+    
+    return search(setUpPessoaFisicaToCompare(cpf));
+  }
+
+  public PessoaBase searchPessoaJuridica(String cnpj){
+    
+    return search(setUpPessoaJuridicaToCompare(cnpj));
+  }
+
 
 
 
